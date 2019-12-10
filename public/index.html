@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>21424107_FinalWeb</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/loginsingup.css">
+    <link rel="stylesheet" href="./css/mypage.css">
+    <link rel="stylesheet" href="./css/product.css">
+    <link rel="stylesheet" href="./css/purchase.css">
+    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+    <!-- favicon -->
+    <link rel=" shortcut icon" href="./image/favicon.png">
+    <link rel="icon" href="./image/favicon.png">
+</head>
+
+<body>
+    <!--상단 부분-->
+    <section id="headerWrap">
+        <div id="header">
+            <div id="topBar">
+                <!--topbarLeft-->
+                <div class="box_1200">
+                    <div class="topBarLeft">
+                        <ul>
+                            <li id="login_user"></li>
+                            <li class="login_info" id="login_info_nav"></li>
+                            <li class="nav" id="login_nav">LOGIN</li>
+                            <li class="nav" id="logout_nav">LOGOUT</li>
+                            <li class="nav" id="singup_nav">SINGUP</li>
+                            <li class="nav" id="purc_nav">PURCHASE</li>
+                            <li class="nav" id="admin_nav">ADMIN</li>
+                            <li class="li_last" id="mypage_nav">MYPAGE</li>
+                            <!--로그인 모달창-->
+                            <div id="login_modal" class="modal">
+                                <form method="POST" class="login_container animate">
+                                    <h1>LOGIN</h1>
+                                    <span id="login_close" class="close" title="닫기">&times;</span>
+                                    <input type="text" placeholder="아이디" id="login_id">
+                                    <input type="password" placeholder="비밀번호" id="login_pw">
+                                    <label class="popup_label" id="login_info_label"></label>
+                                    <button type="button" class="btn" id="loginButton">LOGIN</button>
+                                </form>
+                            </div>
+                            <!--회원가입 모달창-->
+                            <div id="singup_modal" class="modal">
+                                <form method="POST" class="singup_container animate">
+                                    <h1>SINGUP</h1>
+                                    <span id="singup_close" class="close" title="닫기">&times;</span>
+                                    <input type="text" placeholder="아이디" id="signup_id">
+                                    <label class="popup_label" id="signup_id_label"></label>
+                                    <input type="password" placeholder="비밀번호" id="signup_pw">
+                                    <label class="popup_label" id="signup_ps_label"></label>
+                                    <input type="text" placeholder="이름" id="signup_name">
+                                    <input type="text" placeholder="주소 (ex: 경상남도 진주시)" id="signup_add">
+                                    <input type="text" placeholder="휴대폰번호 ('-' 제외 숫자만 입력)" id="signup_pnum"
+                                        onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+                                    <label class="popup_label" id="signup_pnum_label"></label>
+                                    <input type="text" placeholder="이메일" id="signup_email">
+                                    <label class="popup_label" id="signup_all_label"></label>
+                                    <button type="button" class="btn" id="singupButton">SINGUP</button>
+                                </form>
+                            </div>
+                            <!--내정보 모달창-->
+                            <div id="mypage_modal" class="modal">
+                                <form method="POST" class="mypage_container animate">
+                                    <h1>MYPAGE</h1>
+                                    <span id="mypage_close" class="close" title="닫기">&times;</span>
+                                    <input type="text" placeholder="아이디" id="mypage_id" readonly>
+                                    <input type="password" placeholder="비밀번호" id="mypage_pw">
+                                    <input type="text" placeholder="이름" id="mypage_name">
+                                    <input type="text" placeholder="주소 (ex: 경상남도 진주시)" id="mypage_add">
+                                    <input type="text" placeholder="휴대폰번호 ('-' 제외 숫자만 입력)" id="mypage_pnum"
+                                        onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+                                    <input type="text" placeholder="이메일" id="mypage_email">
+                                    <label class="popup_label" id="mypage_all_label"></label>
+                                    <button type="button" class="btn" id="updateButton">수정</button>
+                                    <button type="button" class="btn_delete" id="deleteButton">회원탈퇴</button>
+                                </form>
+                            </div>
+                            <!--구매항목 모달창-->
+                            <div id="purc_modal" class="modal">
+                                <form method="POST" class="purc_container animate">
+                                    <h1>PURCHASE</h1>
+                                    <span id="purc_close" class="close" title="닫기">&times;</span>
+                                    <table id='purc_table'>
+                                        <tbody>
+                                            <tr>
+                                                <th>상품명</th>
+                                                <th>개수</th>
+                                                <th>가격</th>
+                                                <th>연락처</th>
+                                                <th>주소</th>
+                                                <th>구매일자</th>
+                                                <th>정보</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <ul id="purc_list">
+                                        <li></li>
+                                    </ul>
+                                </form>
+                            </div>
+                            <!--관리자 모달창-->
+                            <div id="admin_modal" class="modal">
+                                <form method="POST" class="admin_container animate">
+                                    <h1>ADMIN</h1>
+                                    <span id="admin_close" class="close" title="닫기">&times;</span>
+                                    <select id='userSelect'>
+                                        <option value="default">구매자 선택</option>
+                                    </select>
+                                    <input type="button" value="조회" id="selectUserid">
+                                    <table id='admin_table'>
+                                        <tbody>
+                                            <tr>
+                                                <th>구매자</th>
+                                                <th>구매번호</th>
+                                                <th>상품명</th>
+                                                <th>개수</th>
+                                                <th>결제가격</th>
+                                                <th>구매일자</th>
+                                                <th>배송지주소</th>
+                                                <th>배송연락처</th>
+                                                <th>정보</th>
+                                                <th>정보변경
+                                                    <select id="etcSelect">
+                                                        <option>결제완료</option>
+                                                        <option>상품준비중</option>
+                                                        <option>배송중</option>
+                                                        <option>배송완료</option>
+                                                    </select>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <ul id="admin_list">
+                                        <li></li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 로고 -->
+            <div id="logo">
+                <a href="index.html">
+                    <img src="./image/logo.png" width="180" height="180">
+                </a>
+            </div>
+            <!-- 카테고리 -->
+            <div id="category">
+                <ul>
+                    <li><a href="#" class="cateNav">OUTER</a></li>
+                    <li><a href="#" class="cateNav">TOP</a></li>
+                    <li><a href="#" class="cateNav">PANTS</a></li>
+                    <li><a href="#" class="cateNav">SHIRTS</a></li>
+                    <li><a href="#" class="cateNav">SHOES</a></li>
+                    <li><a href="#" class="cateNav">ACC</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--중앙 부분-->
+    <section id="contentWrapper">
+        <div id="mainContentWrapper">
+            <div id="main">
+                <!-- 메인 상단-->
+                <div id="mainTop">
+                    <!-- 슬라이드 -->
+                    <div id="slideShow">
+                        <ul id="slider">
+                            <li>
+                                <img src="./image/slideimage/slide01.webp">
+                            </li>
+                            <li>
+                                <img src="./image/slideimage/slide02.webp">
+                            </li>
+                            <li>
+                                <img src="./image/slideimage/slide03.webp">
+                            </li>
+                            <li>
+                                <img src="./image/slideimage/slide04.webp">
+                            </li>
+                        </ul>
+                        <!-- 슬라이드 버튼 -->
+                        <section class="btns" id="next"><span class="slideArrow">▶</span></section>
+                        <section class="btns" id="previous"><span class="slideArrow">◀</span></section>
+                    </div>
+                </div>
+                <!-- 메인 상단 상품 -->
+                <div id="mainTitle">
+                    <div>WEAR</div>
+                </div>
+                <!-- 상단 WEAR-->
+                <section class="tab_container">
+                    <!-- 상품1 -->
+                    <ul class="prdList">
+                        <li class="item">
+                            <div class="box">
+                                <figure class="imageEffect">
+                                    <a href="#">
+                                        <img id="prd_image" src="./image/wearimage/sample1.jpg">
+                                    </a>
+                                    <figcaption>
+                                        <p id="prd_name">Product Sample</p>
+                                        <p id="prd_subname">OUTER</p>
+                                        <p id="prd_price">237,000원</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 상품2 -->
+                    <ul class="prdList">
+                        <li class="item">
+                            <div class="box">
+                                <figure class="imageEffect">
+                                    <a href="#">
+                                        <img id="prd_image" src="./image/wearimage/sample2.jpg">
+                                    </a>
+                                    <figcaption>
+                                        <p id="prd_name">Product Sample</p>
+                                        <p id="prd_subname">PANTS</p>
+                                        <p id="prd_price">42,000원</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 상품3 -->
+                    <ul class="prdList">
+                        <li class="item">
+                            <div class="box">
+                                <figure class="imageEffect">
+                                    <a href="#">
+                                        <img id="prd_image" src="./image/wearimage/sample3.jpg">
+                                    </a>
+                                    <figcaption>
+                                        <p id="prd_name">Product Sample</p>
+                                        <p id="prd_subname">SHIRTS</p>
+                                        <p id="prd_price">25,000원</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 상품4 -->
+                    <ul class="prdList">
+                        <li class="item">
+                            <div class="box">
+                                <figure class="imageEffect">
+                                    <a href="#">
+                                        <img id="prd_image" src="./image/wearimage/sample4.jpg">
+                                    </a>
+                                    <figcaption>
+                                        <p id="prd_name">Product Sample</p>
+                                        <p id="prd_subname">TOP</p>
+                                        <p id="prd_price">56,000원</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 상품5 -->
+                    <ul class="prdList">
+                        <li class="item">
+                            <div class="box">
+                                <figure class="imageEffect">
+                                    <a href="#">
+                                        <img id="prd_image" src="./image/wearimage/sample5.jpg">
+                                    </a>
+                                    <figcaption>
+                                        <p id="prd_name">Product Sample</p>
+                                        <p id="prd_subname">PANTS</p>
+                                        <p id="prd_price">62,000원</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 상품6 -->
+                    <ul class="prdList">
+                        <li class="item">
+                            <div class="box">
+                                <figure class="imageEffect">
+                                    <a href="#">
+                                        <img id="prd_image" src="./image/wearimage/sample6.jpg">
+                                    </a>
+                                    <figcaption>
+                                        <p id="prd_name">Product Sample</p>
+                                        <p id="prd_subname">OUTER</p>
+                                        <p id="prd_price">28,000원</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 상품7 -->
+                    <ul class="prdList">
+                        <li class="item">
+                            <div class="box">
+                                <figure class="imageEffect">
+                                    <a href="#">
+                                        <img id="prd_image" src="./image/wearimage/sample7.jpg">
+                                    </a>
+                                    <figcaption>
+                                        <p id="prd_name">Product Sample</p>
+                                        <p id="prd_subname">OUTER</p>
+                                        <p id="prd_price">137,000원</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 상품8 -->
+                    <ul class="prdList">
+                        <li class="item">
+                            <div class="box">
+                                <figure class="imageEffect">
+                                    <a href="#">
+                                        <img id="prd_image" src="./image/wearimage/sample8.jpg">
+                                    </a>
+                                    <figcaption>
+                                        <p id="prd_name">Product Sample</p>
+                                        <p id="prd_subname">TOP</p>
+                                        <p id="prd_price">23,000원</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 상품9 -->
+                    <ul class="prdList">
+                        <li class="item">
+                            <div class="box">
+                                <figure class="imageEffect">
+                                    <a href="#">
+                                        <img id="prd_image" src="./image/wearimage/sample9.jpg">
+                                    </a>
+                                    <figcaption>
+                                        <p id="prd_name">Product Sample</p>
+                                        <p id="prd_subname">OUTER</p>
+                                        <p id="prd_price">250,000원</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 상품10 -->
+                    <ul class="prdList">
+                        <li class="item">
+                            <div class="box">
+                                <figure class="imageEffect">
+                                    <a href="#">
+                                        <img id="prd_image" src="./image/wearimage/sample10.jpg">
+                                    </a>
+                                    <figcaption>
+                                        <p id="prd_name">Product Sample</p>
+                                        <p id="prd_subname">PANTS</p>
+                                        <p id="prd_price">72,000원</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                <!-- 중단 PRODUCT-->
+                <div id="mainTitle">
+                    <div>PRODUCT</div>
+                    <input type="button" value="제품추가" id="proadd">
+                </div>
+                <!-- 메인 프로덕트 -->
+                <section class="main_tab_container">
+                    <ul class="main_prdList">
+                        <!-- 메인상품이 추가될 위치 -->
+                    </ul>
+                </section>
+                <!-- 제품 상세페이지 모달창 -->
+                <div id="pro_modal" class="modal">
+                    <form method="POST" class="pro_container animate">
+                        <h1>PRODUCT</h1>
+                        <span id="pro_delete" class="pro_del" title="삭제">제품삭제</span>
+                        <span id="pro_close" class="close" title="닫기">&times;</span>
+                        <div id="productBox">
+                            <div id="productImgae">
+                                <img src="./image/wearimage/sample1.jpg">
+                                <span id="productName"></span>
+                                <p id="productNum"></p>
+                                <p id="productClass"></p>
+                            </div>
+                            <div id="productBuycontainer">
+                                <p id="productStock"><span></span></p>
+                                <p id="productPrice"><span></span></p>
+                                <input id="proleft" type="button" value="<">
+                                <input id="stockbox" type="text" value="1">
+                                <input id="proright" type="button" value=">">
+                                <p id="totalPrice"><span></span></p>
+                                <input id="buyAdd" type="text" placeholder="받는 분 주소">
+                                <input id="buyPnum" type="text" placeholder="받는 분 연락처">
+                                <div class="probtn">
+                                    <button type="button" id="productbuy">구매하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- 제품 추가 모달창 -->
+                <div id="proadd_modal" class="modal">
+                    <form method="POST" class="proadd_container animate">
+                        <h1>PRODUCT</h1>
+                        <span id="proadd_close" class="close" title="닫기">&times;</span>
+                        <input type="text" placeholder="제품코드(숫자만, 중복불가)" id="pro_add_code"
+                            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+                        <input type="text" placeholder="제품이름" id="pro_add_name">
+                        <input type="text" placeholder="제품개수(숫자만)" id="pro_add_stock"
+                            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+                        <input type="text" placeholder="제품가격(숫자만)" id="pro_add_price"
+                            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+                        <input type="text" placeholder="제품구분(ex:OUTER, TOP, PANTS...)" id="pro_add_class">
+                        <input type="text" placeholder="이미지 이름" id="pro_add_img" readonly>
+                        <label class="popup_label" id="add_info_label"></label>
+                        <button type="button" class="btn" id="pro_add_btn">ADD PRODUCT</button>
+                    </form>
+                    <form method="POST" id="imgUpform" class="proadd_container animate" target="param"
+                        action="/imgUpdate" enctype="multipart/form-data" accept="image/*" onsubmit="return checkImg()">
+                        <p id=" imageinfo">제품 이미지 추가</p>
+                        <input type="file" name="img" id="imageFile">
+                        <button type="submit" id="imageUpBtn">이미지 업로드</button>
+                        <!-- 페이지 이동 막기 -->
+                        <iframe id="if" name="param"></iframe>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--하단 부분-->
+    <section id="footerWrap">
+        <div id="footer">
+            <div class="footer_info">
+                <h2 class="footerTitle">INFOMATION</h2>
+                <div class="footer_text">
+                    <p>업체명. FinalWeb</p>
+                    <p>전화번호. 010-xxxx-xxxx</p>
+                    <p>대표. Jake_k95</p>
+                    <p>주소. 경상남도 진주시 동진로 33</p>
+                </div>
+            </div>
+            <div class="footer_contact">
+                <h2 class="footerTitle">CONTACT</h2>
+                <div class="footer_text">
+                    <p>1588-0000</p>
+                    <p>OPEN AM10 - PM06 / LUNCH PM12 - PM01</p>
+                    <p>CLOSE SAT/SUN/HOLIDAY OFF</p>
+                    <div class="footer_bank">
+                        <p>국민 000000-00-000000</p>
+                        <p>우리 0000-000-0000000</p>
+                        <p>예금주 : Jake_k95</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="./js/admin.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/slide.js"></script>
+    <script src="./js/singup.js"></script>
+    <script src="./js/mypage.js"></script>
+    <script src="./js/purchase.js"></script>
+    <script src="./js/product.js"></script>
+</body>
+
+</html>

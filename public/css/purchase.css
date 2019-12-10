@@ -1,0 +1,87 @@
+/* 구매항목 폼 */
+
+.purc_container {
+    background-color: #fefefe;
+    margin: 5px auto;
+    border: 1px solid #888;
+    width: 1000px;
+    height: auto;
+    padding: 16px;
+}
+
+.purc_container h1 {
+    padding-bottom: 15px;
+    float: left;
+    width: 200px;
+}
+
+table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border-bottom: 1px solid #444444;
+    padding: 15px;
+}
+
+th {
+    background-color: #000;
+    color: #fff
+}
+
+.admin_container {
+    background-color: #fefefe;
+    margin: 5px auto;
+    border: 1px solid #888;
+    width: 1200px;
+    height: auto;
+    padding: 16px;
+}
+
+.admin_container h1 {
+    padding-bottom: 15px;
+    float: left;
+    width: 200px;
+}
+
+#userSelect {
+    width: 100px;
+    height: 35px;
+}
+
+#selectUserid {
+    width: 50px;
+    height: 35px;
+    background-color: #000;
+    color: #fff;
+    border: 0;
+}
+
+#selectUserid:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#etcSelect {
+    width: 90px;
+    height: 25px;
+}
+
+#selectChange,
+#selectDelete {
+    width: 50px;
+    height: 30px;
+    background-color: #000;
+    color: #fff;
+    border: 0;
+}
+
+#selectChange:hover,
+#selectDelete:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    background-color: red;
+}

@@ -1,0 +1,196 @@
+/* 구매 폼 */
+
+#buyAdd,
+#buyPnum {
+    width: 350px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#buyAdd {
+    margin-top: 20px;
+}
+
+.pro_container {
+    background-color: #fefefe;
+    margin: 5px auto;
+    border: 1px solid #888;
+    width: 850px;
+    padding: 16px;
+}
+
+.pro_container h1 {
+    padding-bottom: 15px;
+    float: left;
+    width: 350px;
+}
+
+#productBox {
+    clear: both;
+    width: 100%;
+    margin: 0 auto;
+    height: 500px;
+}
+
+#productBox span {
+    font-weight: bold;
+}
+
+#productImgae {
+    width: 400px;
+    height: 350px;
+    margin: 0;
+    float: left;
+}
+
+#productImgae img {
+    float: left;
+    width: 450px;
+    height: 350px;
+    object-fit: cover;
+    text-align: center;
+}
+
+#productBuycontainer {
+    margin-left: 80px;
+    float: left;
+    width: 350px;
+    height: 450px;
+}
+
+#productBuycontainer span {
+    font-weight: bold;
+}
+
+#productName {
+    text-align: center;
+    font-size: 24px;
+    padding-top: 15px;
+}
+
+#productPrice {
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+#productNum {
+    padding-top: 30px;
+}
+
+#productbuy {
+    position: relative;
+    width: 350px;
+    height: 50px;
+    bottom: 25%;
+    color: #fff;
+    background-color: #000;
+    border: 0;
+    display: inline-block;
+}
+
+#productbuy.active {
+    display: none;
+}
+
+.probtn {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.pro_del {
+    display: none;
+    position: relative;
+    float: left;
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.pro_del:hover,
+.pro_del:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.pro_del.active {
+    display: inline-block;
+}
+
+#proadd {
+    display: none;
+    border: 0;
+    background-color: #000;
+    color: #fff;
+    width: 70px;
+    height: 30px;
+}
+
+#proadd:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#proadd.active {
+    display: inline-block;
+}
+
+.proadd_container {
+    background-color: #fefefe;
+    margin: 5px auto;
+    border: 1px solid #888;
+    width: 500px;
+    padding: 16px;
+}
+
+.proadd_container h1 {
+    padding-bottom: 15px;
+    float: left;
+    width: 200px;
+}
+
+#stockbox {
+    width: 60px;
+}
+
+#proleft {
+    width: 30px;
+    height: 40px;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    border: 0;
+}
+
+#proright {
+    width: 30px;
+    height: 40px;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    border: 0;
+}
+
+#proleft:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#proright:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#imageinfo {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#if {
+    width: 0px;
+    height: 0px;
+    border: 0px;
+}

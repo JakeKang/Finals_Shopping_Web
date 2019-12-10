@@ -1,0 +1,492 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #888787;
+}
+
+div section {
+    display: block;
+}
+
+/*header*/
+#topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    clear: both;
+    width: 100%;
+    height: 35px;
+    background-color: #000;
+}
+
+.box_1200 {
+    position: relative;
+    clear: both;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.topBarLeft li {
+    position: relative;
+    margin: 10px 5px 5px 15px;
+    display: inline-block;
+    color: white;
+    font-size: 12px;
+}
+
+.li_last::after {
+    content: "";
+}
+
+.topBarLeft .nav::after {
+    content: "|";
+    margin-left: 20px;
+    color: #fff;
+}
+
+.nav:hover {
+    color: #ffee00;
+    cursor: pointer;
+}
+
+#logout_nav {
+    display: none;
+}
+
+#logout_nav.active {
+    display: inline-block;
+}
+
+#login_nav.active {
+    display: none;
+}
+
+#singup_nav.active {
+    display: none;
+}
+
+#mypage_nav {
+    display: none;
+}
+
+#mypage_nav.active {
+    display: inline-block;
+}
+
+#admin_nav {
+    display: none;
+}
+
+#admin_nav.active {
+    display: inline-block;
+}
+
+#purc_nav {
+    display: none;
+}
+
+#purc_nav.active {
+    display: inline-block;
+}
+
+.li_last:hover {
+    color: #ffee00;
+    cursor: pointer;
+}
+
+/*logo*/
+#logo {
+    position: relative;
+    clear: both;
+    padding: 75px 0 40px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+/*category*/
+#category {
+    border-top: 1px solid #d1d1d1;
+    border-bottom: 1px solid #d1d1d1;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0 20px 0;
+    clear: both;
+    text-align: center;
+}
+
+#category li {
+    position: relative;
+    display: inline;
+    margin: 20px 30px;
+}
+
+#category li>.cateNav:hover {
+    color: #000;
+    border-bottom: 1px solid #000;
+    border-width: 2px;
+    cursor: pointer;
+    padding: 20px 0;
+}
+
+/*content*/
+#contentWrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    min-width: 1200px;
+}
+
+#mainContentWrapper {
+    clear: both;
+    /*float 좌우정렬 해제*/
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 100px;
+    padding-top: 30px;
+}
+
+#main {
+    clear: both;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#mainTop {
+    clear: both;
+    width: 1200px;
+    height: 450px;
+    margin: 0 auto;
+}
+
+/*slideShow*/
+#slideShow {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+}
+
+#slideShow ul#slider {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 슬라이드 애니메이션 */
+    -webkit-transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    -o-transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+#slideShow ul#slider li {
+    float: left;
+    position: relative;
+    width: 1200px;
+    height: 450px;
+}
+
+#slideShow ul#slider li img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*사진 비율 유지 너비 높이 변경*/
+}
+
+.btns {
+    position: absolute;
+    width: 50px;
+    height: 60px;
+    top: 50%;
+    margin-top: -25px;
+    line-height: 57px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    transition: all 0.1s ease;
+}
+
+.btns:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.slideArrow {
+    color: white;
+    font-size: 24px;
+    opacity: 0.8;
+    font-style: bold;
+}
+
+/* 슬라이드 버튼 기본 숨김 상태 */
+#next {
+    right: -50px;
+    border-radius: 7px 0px 0px 7px;
+}
+
+#previous {
+    left: -50px;
+    border-radius: 0px 7px 7px 7px;
+}
+
+/* 슬라이드 시작시 버튼 표시 */
+#slideShow.active #next {
+    right: 0px;
+}
+
+#slideShow.active #previous {
+    left: 0px;
+}
+
+/* Main */
+
+#mainTitle {
+    clear: both;
+    position: relative;
+    width: 100%;
+    min-width: 1200px;
+    line-height: 50px;
+    border-bottom: 1px solid #d1d1d1;
+    margin: 0 auto 40px;
+    padding-top: 60px;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 15px;
+    color: #000;
+}
+
+#mainTitle div {
+    position: relative;
+    display: inline-block;
+    line-height: 50px;
+    border-bottom: 2px solid #000;
+    top: 1px;
+}
+
+/* 상단 상품 */
+
+.tab_container {
+    clear: both;
+    float: left;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+    position: relative;
+}
+
+.tab_container ul.prdList {
+    float: left;
+    width: 240px;
+    height: 240px;
+    vertical-align: top;
+    margin: 0px;
+    position: relative;
+}
+
+.tab_container ul.prdList li .box {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: center;
+    position: relative;
+}
+
+.box:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#prd_image {
+    max-width: 240px;
+    max-height: 240px;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    vertical-align: top;
+    object-fit: cover;
+}
+
+.prd_image {
+    max-width: 240px;
+    max-height: 240px;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    vertical-align: top;
+    object-fit: cover;
+}
+
+/* 상단 상품 애니메이션 */
+
+.imageEffect figcaption::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #f1f1f1 0%, #fff 75%);
+    content: '';
+    opacity: 0;
+    transform: translate3d(0, 50%, 0);
+}
+
+.imageEffect #prd_name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    top: 40%;
+    opacity: 0;
+    transition: transform 0.35s, color 0.35s;
+    transform: translate3d(0, 20px, 0);
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+}
+
+.imageEffect #prd_subname {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    top: 50%;
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    font-size: 14px;
+    color: #000;
+}
+
+.imageEffect #prd_price {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    top: 60%;
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    font-size: 14px;
+    color: #000;
+}
+
+.imageEffect figcaption::before,
+.imageEffect #prd_name {
+    transition: opacity 0.35s, transform 0.35s;
+}
+
+.imageEffect:hover figcaption::before,
+.imageEffect:hover #prd_name {
+    opacity: 0.6;
+    transform: translate3d(0, 0, 0);
+}
+
+.imageEffect figcaption::before,
+.imageEffect #prd_subname {
+    transition: opacity 0.35s, transform 0.35s;
+}
+
+.imageEffect:hover figcaption::before,
+.imageEffect:hover #prd_subname {
+    opacity: 0.6;
+    transform: translate3d(0, 0, 0);
+}
+
+.imageEffect figcaption::before,
+.imageEffect #prd_price {
+    transition: opacity 0.35s, transform 0.35s;
+}
+
+.imageEffect:hover figcaption::before,
+.imageEffect:hover #prd_price {
+    opacity: 0.6;
+    transform: translate3d(0, 0, 0);
+}
+
+/* 메인 프로덕트 */
+.main_tab_container {
+    clear: both;
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.main_tab_container ul.main_prdList {
+    margin: 25px;
+    float: left;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+ul.main_prdList li {
+    display: inline-block;
+    float: left;
+    margin: 25px;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: center;
+    position: relative;
+}
+
+/* 하단 부분 */
+.footerWrap {
+    clear: both;
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#footer {
+    clear: both;
+    width: 1200px;
+    min-height: 260px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    border-top: 1px solid #d1d1d1;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.footer_info {
+    float: left;
+    width: 340px;
+    height: 290px;
+}
+
+.footerTitle {
+    padding: 25px;
+    width: 100px;
+    border-top: 2px solid #000;
+    font-size: 15px;
+}
+
+.footer_text {
+    clear: both;
+    width: 100%;
+    font-size: 12px;
+    line-height: 22px;
+    color: #777;
+    vertical-align: top;
+    padding: 10px 25px;
+}
+
+.footer_contact {
+    float: left;
+    width: 520px;
+    height: 290px;
+}
+
+.footer_bank {
+    margin: 15px auto;
+}
